@@ -1,30 +1,105 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Github + Hexo搭建博客</title>
+    <url>/2020/06/22/Github-Hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/</url>
+    <content><![CDATA[<h4 id="一、相关软件安装与配置"><a href="#一、相关软件安装与配置" class="headerlink" title="一、相关软件安装与配置"></a>一、相关软件安装与配置</h4><ol>
+<li><h5 id="Git"><a href="#Git" class="headerlink" title="Git"></a>Git</h5><ul>
+<li><p>从<a href="https://git-scm.com/download/win" target="_blank" rel="noopener">Git官网</a>下载软件并安装</p>
+</li>
+<li><p>右键在Git Bash命令行中设置用户名与邮箱地址</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git config --global user.name &quot;&lt;yourname&gt;&quot; </span><br><span class="line">git config --global user.email &quot;&lt;youremail&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建密钥与配置</p>
+<p>执行<code>ssh-keygen -t rsa -C &quot;&lt;yourEmail@example.com&gt;&quot;</code></p>
+<p>在<code>C:\Users\&lt;用户名&gt;\.ssh\id_rsa.pub</code>中生成密钥文件</p>
+</li>
+<li><p>配置远程密钥</p>
+<p>Github个人中心——&gt;Settings——&gt;SSH and GPG keys——&gt;New SSH keys：填入生成密钥</p>
+</li>
+<li><p>创建Github仓库</p>
+<p>新建一个名为userName.github.io的仓库，userName之后会成为你博客地址的一部分</p>
+<p>在仓库settings页面中的GitHub Pages栏中绿色区域就为博客的网址</p>
+<p><img src="/2020/06/22/Github-Hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/GitHubPages.png" alt></p>
+</li>
+</ul>
+</li>
+<li><h5 id="Hexo"><a href="#Hexo" class="headerlink" title="Hexo"></a>Hexo</h5><ul>
+<li><p>从<a href="http://nodejs.cn/download/" target="_blank" rel="noopener">Hexo官网</a>下载软件并安装</p>
+</li>
+<li><p>在cmd命令行运行<code>npm install -g hexo</code>进行安装</p>
+</li>
+<li><p>初始化Hexo：新建你的本地博客文件夹（以blog为例），在文件夹中使用cmd运行<code>hexo init</code>命令初始化博客，会得到如下文件</p>
+<p><img src="/2020/06/22/Github-Hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/%E5%88%9D%E5%A7%8B%E5%8C%96%E7%94%9F%E6%88%90%E6%96%87%E4%BB%B6.png" alt></p>
+<ul>
+<li><p>source文件夹：存放博客所有资源文件，所写文章的Markdown文件存放在_posts子文件夹中</p>
+</li>
+<li><p>themes文件夹：存放博客所用的主题文件，默认为landspace主题</p>
+</li>
+<li><p>_config.yml文件：博客基本配置文件</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h4 id="二、基本信息配置"><a href="#二、基本信息配置" class="headerlink" title="二、基本信息配置"></a>二、基本信息配置</h4><ol>
+<li><h5 id="基本配置文件"><a href="#基本配置文件" class="headerlink" title="基本配置文件"></a>基本配置文件</h5><p>​    在blog/_config.yml中</p>
+<ul>
+<li><p>基本信息配置</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">title: Chennn97&#39;s blog  # web页面标题</span><br><span class="line">subtitle:  # 副标题</span><br><span class="line">description:   # 介绍描述</span><br><span class="line">keywords:  # 关键字</span><br><span class="line">author: Chennn97</span><br><span class="line">language: Zh-cn # 语言设置简体中文</span><br><span class="line">timezone: &#39;&#39;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>部署方式配置</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git # 部署方式</span><br><span class="line">  repository: git@github.com:Chennn97&#x2F;Chennn97.github.io.git  # 之前新建的远程博客仓库地址</span><br><span class="line">  branch: master # 分支名称</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><h5 id="基本命令"><a href="#基本命令" class="headerlink" title="基本命令"></a>基本命令</h5><ul>
+<li><p>生成静态页面：<code>hexo g</code></p>
+</li>
+<li><p>启动本地服务器：<code>hexo s</code></p>
+<p>​        默认端口为4000，若冲突可以通过命令<code>hexo s -p 5000</code>转换成端口5000</p>
+</li>
+<li><p>之后可以在浏览器<code>http://localhost:4000</code>访问自己的博客了</p>
+</li>
+<li><p>部署到Github上就可供他人浏览了，依次执行命令上传</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo d -g</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>如果遇到错误提示<code>ERROR Deployer not found</code>，则需要安装deployer插件，执行以下命令</p>
+<p><code>npm install --save hexo-deployer-git</code></p>
+</li>
+</ul>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>Blog</category>
+      </categories>
+      <tags>
+        <tag>Blog</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Next主题个性设置</title>
     <url>/2020/06/28/Next%E4%B8%BB%E9%A2%98%E4%B8%AA%E6%80%A7%E8%AE%BE%E7%BD%AE/</url>
-    <content><![CDATA[<h3 id="Next主题版本-v5-1-4"><a href="#Next主题版本-v5-1-4" class="headerlink" title="Next主题版本 v5.1.4"></a>Next主题版本 v5.1.4</h3><ul>
-<li><p><strong>设置Next主题</strong></p>
-<p>​        <a href="https://github.com/iissnan/hexo-theme-next" target="_blank" rel="noopener">下载主题</a>，将主题文件放入站点theme文件中，站点配置文件修改如下：</p>
+    <content><![CDATA[<h3 id="Next主题版本-v5-1-4"><a href="#Next主题版本-v5-1-4" class="headerlink" title="Next主题版本 v5.1.4"></a>Next主题版本 v5.1.4</h3><h5 id="1-设置Next主题"><a href="#1-设置Next主题" class="headerlink" title="1.设置Next主题"></a><strong>1.设置Next主题</strong></h5><p>​        <a href="https://github.com/iissnan/hexo-theme-next" target="_blank" rel="noopener">下载主题</a>，将主题文件放入站点theme文件中，站点配置文件修改如下：</p>
 <p>​        <code>theme: hexo-theme-next-master</code></p>
 <p>​        在主题目录中也可以找到<code>_config.yml</code>配置文件，以下称为主题配置文件</p>
-</li>
-<li><p><strong>添加关于我、标签和目录页面</strong></p>
-<p>​        主题配置文件中找到menu，注意去除<code>||</code><em>之前的空格</em></p>
+<h5 id="2-添加关于我、标签和目录页面"><a href="#2-添加关于我、标签和目录页面" class="headerlink" title="2.添加关于我、标签和目录页面"></a><strong>2.添加关于我、标签和目录页面</strong></h5><p>​        主题配置文件中找到menu，注意去除<code>||</code><em>之前的空格</em></p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">about: &#x2F;about&#x2F;|| user</span><br><span class="line">tags: &#x2F;tags&#x2F;|| tags</span><br><span class="line">categories: &#x2F;categories&#x2F;|| th</span><br></pre></td></tr></table></figure>
 
 <p>​        这里以tag标签页面为例，执行<code>hexo new page tags</code>命令生成<code>/source/tags/index.md</code>文件，在其中添加<code>type</code>类型为<code>&quot;tags&quot;</code>，<em>注意冒号之后需要空格</em>；同理分类页面为<code>type: &quot;categories&quot;</code></p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: Tags</span><br><span class="line">date: 2020-06-24 17:08:50</span><br><span class="line">type: &quot;tags&quot;</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
 
 <p>​        添加好后在文章添加<code>tags: Blog</code>标签即可在标签页面中显示Blog标签</p>
-</li>
-<li><p><strong>站内搜索</strong></p>
-<p>​        安装插件<code>npm install hexo-generator-search --save</code> </p>
+<h5 id="3-站内搜索"><a href="#3-站内搜索" class="headerlink" title="3.站内搜索"></a><strong>3.站内搜索</strong></h5><p>​        安装插件<code>npm i --save hexo-wordcount</code></p>
+<p>​        在主题配置文件中修改配置</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># Post wordcount display settings</span><br><span class="line"># Dependencies: https:&#x2F;&#x2F;github.com&#x2F;willin&#x2F;hexo-wordcount</span><br><span class="line">post_wordcount:</span><br><span class="line">  item_text: true</span><br><span class="line">  wordcount: true  </span><br><span class="line">  min2read: true   </span><br><span class="line">  totalcount: true  </span><br><span class="line">  separated_meta: true</span><br></pre></td></tr></table></figure>
+
+<h5 id="4-站内搜索"><a href="#4-站内搜索" class="headerlink" title="4.站内搜索"></a><strong>4.站内搜索</strong></h5><p>​        安装插件<code>npm install hexo-generator-search --save</code> </p>
 <p>​        在主题配置文件修改enable为true，如下：</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># Local search</span><br><span class="line"># Dependencies: https:&#x2F;&#x2F;github.com&#x2F;flashlab&#x2F;hexo-generator-search</span><br><span class="line">local_search:</span><br><span class="line">  enable: true</span><br></pre></td></tr></table></figure>
-</li>
-<li></li>
-</ul>
+
 ]]></content>
       <categories>
         <category>Blog</category>
@@ -50,87 +125,5 @@
 
 <p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
 ]]></content>
-  </entry>
-  <entry>
-    <title>Github + Hexo搭建博客</title>
-    <url>/2020/06/22/Github-Hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/</url>
-    <content><![CDATA[<h4 id="一、相关软件安装与配置"><a href="#一、相关软件安装与配置" class="headerlink" title="一、相关软件安装与配置"></a>一、相关软件安装与配置</h4><ol>
-<li><p>Git</p>
-<ul>
-<li><p>从<a href="https://git-scm.com/download/win" target="_blank" rel="noopener">Git官网</a>下载软件并安装</p>
-</li>
-<li><p>右键在Git Bash命令行中设置用户名与邮箱地址</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git config --global user.name &quot;&lt;yourname&gt;&quot; </span><br><span class="line">git config --global user.email &quot;&lt;youremail&gt;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>创建密钥与配置</p>
-<p>执行<code>ssh-keygen -t rsa -C &quot;&lt;yourEmail@example.com&gt;&quot;</code></p>
-<p>在<code>C:\Users\&lt;用户名&gt;\.ssh\id_rsa.pub</code>中生成密钥文件</p>
-</li>
-<li><p>配置远程密钥</p>
-<p>Github个人中心——&gt;Settings——&gt;SSH and GPG keys——&gt;New SSH keys：填入生成密钥</p>
-</li>
-<li><p>创建Github仓库</p>
-<p>新建一个名为userName.github.io的仓库，userName之后会成为你博客地址的一部分</p>
-<p>在仓库settings页面中的GitHub Pages栏中绿色区域就为博客的网址</p>
-<p><img src="/2020/06/22/Github-Hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/GitHubPages.png" alt></p>
-</li>
-</ul>
-</li>
-<li><p>Hexo</p>
-<ul>
-<li><p>从<a href="http://nodejs.cn/download/" target="_blank" rel="noopener">Hexo官网</a>下载软件并安装</p>
-</li>
-<li><p>在cmd命令行运行<code>npm install -g hexo</code>进行安装</p>
-</li>
-<li><p>初始化Hexo：新建你的本地博客文件夹，在文件夹中使用cmd运行<code>hexo init</code>命令初始化博客，会得到如下文件</p>
-<p><img src="/2020/06/22/Github-Hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/%E5%88%9D%E5%A7%8B%E5%8C%96%E7%94%9F%E6%88%90%E6%96%87%E4%BB%B6.png" alt></p>
-<ul>
-<li><p>source文件夹：存放博客所有资源文件，所写文章的Markdown文件存放在_posts子文件夹中</p>
-</li>
-<li><p>themes文件夹：存放博客所用的主题文件，默认为landspace主题</p>
-</li>
-<li><p>_config.yml文件：博客基本配置文件</p>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ol>
-<h4 id="二、基本信息配置"><a href="#二、基本信息配置" class="headerlink" title="二、基本信息配置"></a>二、基本信息配置</h4><ol>
-<li><p>基本配置文件_config.yml中</p>
-<ul>
-<li><p>基本信息配置</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">title: Chennn97&#39;s blog  # web页面标题</span><br><span class="line">subtitle:  # 副标题</span><br><span class="line">description:   # 介绍描述</span><br><span class="line">keywords:  # 关键字</span><br><span class="line">author: Chennn97</span><br><span class="line">language: Zh-cn # 语言设置简体中文</span><br><span class="line">timezone: &#39;&#39;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>部署方式配置</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git # 部署方式</span><br><span class="line">  repository: git@github.com:Chennn97&#x2F;Chennn97.github.io.git  # 之前新建的远程博客仓库地址</span><br><span class="line">  branch: master # 分支名称</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-<li><p>基本命令</p>
-<ul>
-<li><p>生成静态页面：<code>hexo g</code></p>
-</li>
-<li><p>启动本地服务器：<code>hexo s</code></p>
-<p>​        默认端口为4000，若冲突可以通过命令<code>hexo s -p 5000</code>转换成端口5000</p>
-</li>
-<li><p>之后可以在浏览器<code>http://localhost:4000</code>访问自己的博客了</p>
-</li>
-<li><p>部署到Github上就可供他人浏览了，依次执行命令上传</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo d -g</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>如果遇到错误提示<code>ERROR Deployer not found</code>，则需要安装deployer插件，执行以下命令</p>
-<p><code>npm install --save hexo-deployer-git</code></p>
-</li>
-</ul>
-</li>
-</ol>
-]]></content>
-      <categories>
-        <category>Blog</category>
-      </categories>
-      <tags>
-        <tag>Blog</tag>
-      </tags>
   </entry>
 </search>
