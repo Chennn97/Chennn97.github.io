@@ -1,6 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Next主题个性设置</title>
+    <url>/2020/06/28/Next%E4%B8%BB%E9%A2%98%E4%B8%AA%E6%80%A7%E8%AE%BE%E7%BD%AE/</url>
+    <content><![CDATA[<h3 id="Next主题版本-v5-1-4"><a href="#Next主题版本-v5-1-4" class="headerlink" title="Next主题版本 v5.1.4"></a>Next主题版本 v5.1.4</h3><ul>
+<li><p><strong>设置Next主题</strong></p>
+<p>​        <a href="https://github.com/iissnan/hexo-theme-next" target="_blank" rel="noopener">下载主题</a>，将主题文件放入站点theme文件中，站点配置文件修改如下：</p>
+<p>​        <code>theme: hexo-theme-next-master</code></p>
+<p>​        在主题目录中也可以找到<code>_config.yml</code>配置文件，以下称为主题配置文件</p>
+</li>
+<li><p><strong>添加关于我、标签和目录页面</strong></p>
+<p>​        主题配置文件中找到menu，注意去除<code>||</code><em>之前的空格</em></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">about: &#x2F;about&#x2F;|| user</span><br><span class="line">tags: &#x2F;tags&#x2F;|| tags</span><br><span class="line">categories: &#x2F;categories&#x2F;|| th</span><br></pre></td></tr></table></figure>
+
+<p>​        这里以tag标签页面为例，执行<code>hexo new page tags</code>命令生成<code>/source/tags/index.md</code>文件，在其中添加<code>type</code>类型为<code>&quot;tags&quot;</code>，<em>注意冒号之后需要空格</em>；同理分类页面为<code>type: &quot;categories&quot;</code></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: Tags</span><br><span class="line">date: 2020-06-24 17:08:50</span><br><span class="line">type: &quot;tags&quot;</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+
+<p>​        添加好后在文章添加<code>tags: Blog</code>标签即可在标签页面中显示Blog标签</p>
+</li>
+<li><p><strong>站内搜索</strong></p>
+<p>​        安装插件<code>npm install hexo-generator-search --save</code> </p>
+<p>​        在主题配置文件修改enable为true，如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># Local search</span><br><span class="line"># Dependencies: https:&#x2F;&#x2F;github.com&#x2F;flashlab&#x2F;hexo-generator-search</span><br><span class="line">local_search:</span><br><span class="line">  enable: true</span><br></pre></td></tr></table></figure>
+</li>
+<li></li>
+</ul>
+]]></content>
+      <categories>
+        <category>Blog</category>
+      </categories>
+      <tags>
+        <tag>Blog</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hello World</title>
+    <url>/2020/06/22/hello-world/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+]]></content>
+  </entry>
+  <entry>
     <title>Github + Hexo搭建博客</title>
     <url>/2020/06/22/Github-Hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/</url>
     <content><![CDATA[<h4 id="一、相关软件安装与配置"><a href="#一、相关软件安装与配置" class="headerlink" title="一、相关软件安装与配置"></a>一、相关软件安装与配置</h4><ol>
@@ -81,23 +132,5 @@
       <tags>
         <tag>Blog</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>Hello World</title>
-    <url>/2020/06/22/hello-world/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-]]></content>
   </entry>
 </search>
